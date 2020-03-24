@@ -67,13 +67,13 @@ public class T05_MemberInfoTest {
 		int choice;
 		do{
 			displayMenu(); //메뉴 출력
-			choice = scan.nextInt(); // 메뉴번호 입력받기
+			choice = Integer.parseInt(scan.nextLine()); // 메뉴번호 입력받기
 			switch(choice){
 				case 1 :  // 자료 입력
 					insertMember();
 					break;
 				case 2 :  // 자료 삭제
-				
+					deleteMember();
 					break;
 				case 3 :  // 자료 수정
 					updateMember();
@@ -90,7 +90,36 @@ public class T05_MemberInfoTest {
 		}while(choice!=5);
 	}
 	
-	
+	/**
+	 * 회원정보 삭제하는 메서드
+	 */
+	private void deleteMember() {
+		System.out.println();
+		System.out.println("삭제할 아이디를 입력하세요 >> ");
+		String memId = scan.nextLine();
+		
+		try {
+			conn = DBUtil.getConnection();
+			
+			String sql = "DELETE FROM mymember WHERE mem_id = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memId);
+			
+			int cnt = pstmt.executeUpdate();
+			if(cnt>0) {
+				System.out.println(memId + "회원 삭제 성공 ~~~~~");
+			}else {
+				System.out.println(memId + "회원 삭제 실패 ㅠㅠㅠㅠ");
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			disConnect();
+		}
+		
+	}
+
 	/**
 	 * 회원 정보를 수정하는 메소드
 	 */
@@ -102,7 +131,7 @@ public class T05_MemberInfoTest {
 			System.out.println();
 			System.out.println("수정할 회원 정보를 입력하세요.");
 			System.out.print  ("회원ID >> ");
-			memId = scan.next();
+			memId = scan.nextLine();
 			chk = getMember(memId);
 			if(chk == true) {
 				System.out.println("회원ID가 " + memId + "인 회원은 존재하지 않습니다.");
@@ -111,12 +140,12 @@ public class T05_MemberInfoTest {
 		}while(chk == true);
 		
 		System.out.print  ("업데이트 후 회원 이름 >> ");
-		String memName = scan.next();
+		String memName = scan.nextLine();
 		
 		System.out.print  ("업데이트 후 회원 전화번호 >> ");
-		String memTel = scan.next();
+		String memTel = scan.nextLine();
 		
-		scan.nextLine(); // 입력버퍼 지우기
+//		scan.nextLine(); // 입력버퍼 지우기 있으면 에러
 		System.out.print  ("업데이트 후 회원 주소 >> ");
 		String memAddr = scan.nextLine();
 
@@ -192,7 +221,7 @@ public class T05_MemberInfoTest {
 			System.out.println();
 			System.out.println("추가할 회원 정보를 입력하세요.");
 			System.out.print  ("회원ID >> ");
-			memId = scan.next();
+			memId = scan.nextLine();
 			chk = getMember(memId);
 			if(chk == true) {
 				System.out.println("회원ID가 " + memId + "인 회원은 이미 존재합니다.");
@@ -200,13 +229,14 @@ public class T05_MemberInfoTest {
 			}
 		}while(chk == true);
 		
+		
 		System.out.print  ("회원 이름 >> ");
-		String memName = scan.next();
+		String memName = scan.nextLine();
 		
 		System.out.print  ("회원 전화번호 >> ");
-		String memTel = scan.next();
+		String memTel = scan.nextLine();
 		
-		scan.nextLine(); // 입력버퍼 지우기
+//		scan.nextLine(); // 입력버퍼 지우기
 		System.out.print  ("회원 주소 >> ");
 		String memAddr = scan.nextLine();
 
