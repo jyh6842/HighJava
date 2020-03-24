@@ -1,4 +1,4 @@
-package jdbcTest;
+package jdbc.test;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,6 +18,8 @@ public class T03_JdbcTest {
       Connection conn= null;
       Statement stmt= null;
       PreparedStatement pstmt = null;
+      
+
       
       try {
          Class.forName("oracle.jdbc.driver.OracleDriver");
