@@ -16,7 +16,7 @@ public class DBUtil {
 	
 	public static Connection getConnection() {
 		try {
-			return DriverManager.getConnection("jdbc:oracle:thin:@loacalhost:1521/xe", "jyh6842", "java");
+			return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/xe", "jyh6842", "java");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
