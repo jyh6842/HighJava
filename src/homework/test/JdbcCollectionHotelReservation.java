@@ -12,7 +12,11 @@ import java.util.Set;
 
 public class JdbcCollectionHotelReservation {
 	Scanner sc = new Scanner(System.in);
-	Map<String, String> roomMap = new HashMap<String, String>();
+	
+	Connection conn = null;
+	Statement stmt = null;
+	ResultSet rs = null;
+	
 	
 	public static void main(String[] args) {
 		
@@ -58,31 +62,74 @@ public class JdbcCollectionHotelReservation {
 	}
 
 	private void EnterpriseCheckRoom() {
-		Set<String> keySet = roomMap.keySet();
-		for(String key  : keySet) {
-			System.out.println("방번호 : " +key+ "투숙객 : " + roomMap.get(key));
+		try {
+			// 1. 드라이버 로딩
+				Class.forName("oracle.jdbc.driver.OracleDriver");
+			// 2. DB 접속(연결) 연결되면 연결객체를 얻는다. 또한 접속을 위한 아이디와 비밀번호를 받는다.
+				conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/xe", "jyh6842", "java");
+				
+			// 3. 연결되면 SQL 문을 실행하기 위한 객체를 만든다.Statement 이고 연결을 위해서 위에서 사용하였던 connection 객체를 사용한다.
+				stmt = conn.createStatement();
+				
+			// 4. sql문을 작성하고 Statement객체.executeQuery(sql)이나 .exectueUpdate(sql)문을 사용하여 sql문을 실행한다.
+				String sql = "SELECT * FROM hotel";
+				
+				rs = stmt.executeQuery(sql);
+				
+				while(rs.next()) {
+					System.out.print(rs.getInt("roomNum"));
+					System.out.println(rs.getString("roomGesut"));
+				}
+				
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+			
+		
+		
+
 
 	}
 
 	private void checkOut() {
-		System.out.println("어느방에 체크인 하시겠습니까?");
-		System.out.print("방번호 입력 =>");
-		String roomNum = sc.nextLine();
-		if (!roomMap.containsKey(roomNum)) { // 방에 사람이 있으면 break;
-			System.out.println("방을 잘못 입력하셨습니다.");
-			return;
+		try {
+			// 1. 드라이버 로딩
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			
+			// 2. DB에 접속(DB에 연결)
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/xe", "jyh6842", "java");
+			
+			// 3. Statement 객체 생성 => Connection 객체를 이용한다.
+			stmt = conn.createStatement();
+			
+			// 4. SQL문 작성 및 Statement 문을 실행한다.
+			System.out.println("몇번 방을 체크하웃하시겠습니까?");
+			int roomNum = Integer.parseInt(sc.nextLine());
+			String sql = "DELETE FROM hotel WHERE roomNum = '"+roomNum+"'";
+			
+			int cnt = stmt.executeUpdate(sql);
+			
+			if(cnt>0) {
+				System.out.println(roomNum + " 방이 체크아웃 되었습니다.");
+			}else {
+				System.out.println(roomNum + " 방이 체크아웃에 실패했습니다.");
+			}
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		roomMap.remove(roomNum);
 
 	}
 
 	private void checkIn() {
-		
-		Connection conn = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-		
+
 		try {
 			// 1. 드라이버 로딩
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -102,7 +149,7 @@ public class JdbcCollectionHotelReservation {
 			// 실행 결과를 ResultSet 객체에 저장한다.
 			System.out.println("어느방에 체크인 하시겠습니까?");
 			System.out.print("방번호 입력 =>");
-			String roomNum = sc.nextLine();
+			int roomNum = Integer.parseInt(sc.nextLine());
 			String sql = "SELECT * FROM hotel WHERE roomNum ='"+roomNum+"'";
 			rs = stmt.executeQuery(sql);
 			if(rs.next()) {
