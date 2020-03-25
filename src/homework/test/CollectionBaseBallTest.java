@@ -1,4 +1,4 @@
-package homework;
+package homework.test;
 
 import java.util.HashSet;
 import java.util.Iterator;

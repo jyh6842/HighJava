@@ -1,4 +1,4 @@
-package homework;
+package homework.test;
 
 import java.text.NumberFormat;
 
