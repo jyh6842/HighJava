@@ -1,4 +1,4 @@
-package mvc.test;
+package iBatis;
 /**
  * DB 테이블에 잇는 컬럼을 기준으로 데이터를 객체화한 클래스
  * @author Jeon
