@@ -1,12 +1,16 @@
-package mvc.test;
+package singleton.mvc.member.service;
 
 import java.util.List;
+
+import singleton.mvc.member.vo.MemberVO;
+
+
 
 public interface IMemberService {
 	
 	/**
 	 * MemberVO 에 담겨진 자료를 DB에 insert하는 메서드
-	 * @param mv DBdp insert할 자료가 저장된 MemberVO 객체
+	 * @param mv DB에 insert할 자료가 저장된 MemberVO 객체
 	 * @return DB작업이 성공하면 1, 실패하면 0이 반환됨.
 	 */
 	public int insertMember(MemberVO mv);
