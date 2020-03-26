@@ -1,14 +1,18 @@
-package mvc.test;
+package mvc.member.service;
 
 import java.util.List;
 
-public class MemberServiceImp implements IMemberService{
+import mvc.member.dao.IMemberDao;
+import mvc.member.dao.MemberDaoImpl;
+import mvc.member.vo.MemberVO;
+
+public class MemberServiceImpl implements IMemberService{
 
 	// 사용할 DAO의 객체 변수를 선언한다.
 	private IMemberDao memDao;
 	
-	public MemberServiceImp() {
-		memDao = new MeberDaoImpl();
+	public MemberServiceImpl() {
+		memDao = new MemberDaoImpl();
 	}
 	@Override
 	public int insertMember(MemberVO mv) {

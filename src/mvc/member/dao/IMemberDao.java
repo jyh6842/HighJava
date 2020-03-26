@@ -1,12 +1,19 @@
-package mvc.test;
+package mvc.member.dao;
 
 import java.util.List;
 
-public interface IMemberService {
-	
+import mvc.member.vo.MemberVO;
+
+/**
+ * 실제 DB와 연결해서 SQL문을 수행후 결과를 작성하여
+ * Service에 전달하는 DAO의 interface 
+ * @author Jeon
+ *
+ */
+public interface IMemberDao {
 	/**
 	 * MemberVO 에 담겨진 자료를 DB에 insert하는 메서드
-	 * @param mv DBdp insert할 자료가 저장된 MemberVO 객체
+	 * @param mv DB에 insert할 자료가 저장된 MemberVO 객체
 	 * @return DB작업이 성공하면 1, 실패하면 0이 반환됨.
 	 */
 	public int insertMember(MemberVO mv);
@@ -38,4 +45,22 @@ public interface IMemberService {
 	 * @return 작업성공: 1, 작업실패: 0
 	 */
 	public int deleteMember(String memId);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
