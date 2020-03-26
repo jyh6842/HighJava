@@ -1,4 +1,4 @@
-package homework.test;
+package homework.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

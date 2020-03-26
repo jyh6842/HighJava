@@ -1,4 +1,4 @@
-package homework.test;
+package homework.gernericEnum;
 
 import java.text.NumberFormat;
 

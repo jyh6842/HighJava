@@ -1,4 +1,4 @@
-package homework.test;
+package homework.collection;
 
 import java.util.HashMap;
 import java.util.Map;
