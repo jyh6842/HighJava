@@ -10,6 +10,7 @@ import java.util.List;
 
 import singleton.mvc.member.vo.MemberVO;
 import singleton.mvc.util.DBUtil;
+import singleton.mvc.util.DBUtil3;
 
 public class MemberDaoImpl implements IMemberDao {
 
@@ -190,6 +191,66 @@ public class MemberDaoImpl implements IMemberDao {
 			disConnect();
 		}
 		return cnt;
+	}
+
+	@Override
+	public List<MemberVO> getSearchMember(MemberVO mv) {
+		List<MemberVO> memList = new ArrayList<>();
+		
+		try {
+			conn = DBUtil3.getConnection();
+			
+			// Dynamic Query 라고 함 뒤에 상황에 따라서 바뀌는 쿼리
+			String sql = "SELECT * FROM mymember WHERE 1=1 "; // 1=1을 넣으면 다음 쿼리를 넣을 때 and를 붙이면 되는 편리함이 생김
+			
+			if(mv.getMem_id() != null && !mv.getMem_id().equals("")) { //가지고 온게 null 아닌지 확인하고, nullString이 아니라면
+				sql += " and mem_id = ? ";  
+			}
+			if(mv.getMem_name() != null && !mv.getMem_name().equals("")) { //가지고 온게 null 아닌지 확인하고, nullString이 아니라면
+				sql += " and mem_name = ? ";  
+			}
+			if(mv.getMem_tel() != null && !mv.getMem_tel().equals("")) { //가지고 온게 null 아닌지 확인하고, nullString이 아니라면
+				sql += " and mem_tel = ? ";  
+			}
+			if(mv.getMem_addr() != null && !mv.getMem_addr().equals("")) { //가지고 온게 null 아닌지 확인하고, nullString이 아니라면
+				sql += " and mem_addr like '%'|| ? ||'%' ";  //어디 사람인지
+			}
+			
+			pstmt = conn.prepareStatement(sql);
+			int index = 1;
+			if(mv.getMem_id() != null && !mv.getMem_id().equals("")) {
+				pstmt.setString(index++, mv.getMem_id());
+			}
+			if(mv.getMem_name() != null && !mv.getMem_name().equals("")) {
+				pstmt.setString(index++, mv.getMem_name());
+			}
+			if(mv.getMem_tel() != null && !mv.getMem_tel().equals("")) {
+				pstmt.setString(index++, mv.getMem_tel());
+			}
+			if(mv.getMem_addr() != null && !mv.getMem_addr().equals("")) {
+				pstmt.setString(index++, mv.getMem_addr());
+			}
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				MemberVO mv2 = new MemberVO();
+				mv2.setMem_id(rs.getString("mem_id"));
+				mv2.setMem_name(rs.getString("mem_name"));
+				mv2.setMem_tel(rs.getString("mem_tel"));
+				mv2.setMem_addr(rs.getString("mem_addr"));
+
+				memList.add(mv2);
+
+			}
+			
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			disConnect();
+		}
+		
+		return memList;
 	}
 
 }
