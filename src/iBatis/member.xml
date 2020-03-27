@@ -30,7 +30,29 @@
 	 	insert into mymember (mem_id, mem_name, mem_tel, mem_addr) values(#mem_id#, #mem_name#, #mem_tel#, #mem_addr#)
 	 </insert>
 	 
-
+	 <!-- update 연습 -->
+	 <update id = "updateMember" parameterClass="iBatis.MemberVO">
+	 	update mymember
+	 	set mem_name = #mem_name#
+	 	, mem_tel = #mem_tel#
+	 	, mem_addr = #mem_addr#
+	 	where mem_id = #mem_id#
+	 </update>
+	 
+	 <!-- delete 연습 -->
+	 <delete id="deleteMember" parameterClass="String">
+	 	delete from mymember where mem_id = #mem_id#
+	 </delete>
+	 
+	 <!-- select All 연습 -->
+	<select id="getMemberAll" resultClass="iBatis.MemberVO">
+		select * from mymember
+	</select>
+	
+	<!-- select 연습 -->
+	<select id="getMember" parameterClass="String" resultClass="memVO"> <!-- SqlMapConfig.xml 에서 memVO 라는 별명을 지음  -->
+		select * from mymember where mem_id = #mem_id#
+	</select>
 </sqlMap>			
 
 
