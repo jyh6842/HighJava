@@ -3,7 +3,7 @@
 			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
 			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <!-- namespace속성 : 아래에서 작성한 SQL을 호출할 때 같이 사용된다. -->			
-<sqlMap namespace="memberTest">
+<sqlMap namespace="board">
 	<!-- 
 		이 영역에 sql문에 맞는 태그를 사용하여 SQL문을 기술한다.
 		
@@ -26,12 +26,12 @@
 								 (보통 VO클래스나 자바의 자료형이름을 사용한다.)							 
 	 -->
 	 <!-- insert 연습 -->
-	 <insert id ="insertMember" parameterClass="iBatis.MemberVO">
+	 <insert id ="insertBoard" parameterClass="homework.iBatis.vo.BoardVO">
 	 	insert into mymember (mem_id, mem_name, mem_tel, mem_addr) values(#mem_id#, #mem_name#, #mem_tel#, #mem_addr#)
 	 </insert>
 	 
 	 <!-- update 연습 -->
-	 <update id = "updateMember" parameterClass="iBatis.MemberVO">
+	 <update id = "updateBoard" parameterClass="boardVO">
 	 	update mymember
 	 	set mem_name = #mem_name#
 	 	, mem_tel = #mem_tel#
@@ -40,17 +40,17 @@
 	 </update>
 	 
 	 <!-- delete 연습 -->
-	 <delete id="deleteMember" parameterClass="String">
+	 <delete id="deleteBoard" parameterClass="String">
 	 	delete from mymember where mem_id = #mem_id#
 	 </delete>
 	 
 	 <!-- select All 연습 -->
-	<select id="getMemberAll" resultClass="iBatis.MemberVO">
+	<select id="getBoardAll" resultClass="boardVO">
 		select * from mymember
 	</select>
 	
 	<!-- select 연습 -->
-	<select id="getMember" parameterClass="String" resultClass="memVO"> <!-- SqlMapConfig.xml 에서 memVO 라는 별명을 지음  -->
+	<select id="getBoard" parameterClass="String" resultClass="boardVO"> <!-- SqlMapConfig.xml 에서boardVO 라는 별명을 지음  -->
 		select * from mymember where mem_id = #mem_id#
 	</select>
 </sqlMap>			
