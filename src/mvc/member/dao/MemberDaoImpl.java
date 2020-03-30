@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import mvc.member.vo.MemberVO;
 import mvc.util.DBUtil;
 
@@ -17,6 +19,10 @@ public class MemberDaoImpl implements IMemberDao {
 	private Statement stmt;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
+	
+	private final Logger sqlLogger = Logger.getLogger("log4jexam.sql.Query"); // 로거 생성
+	private final Logger paramLogger = Logger.getLogger("log4jexam.sql.Query"); // 로거 생성
+	private final Logger resultLogger = Logger.getLogger(MemberDaoImpl.class); // 로거 생성 // 해당클래스에 해당하는 로거를 생성함
 
 	/**
 	 * 자원 반납용 메소드
@@ -53,13 +59,22 @@ public class MemberDaoImpl implements IMemberDao {
 
 			String sql = "insert into mymember (mem_id, mem_name, mem_tel, mem_addr) values(?, ?, ?, ?)";
 
+			sqlLogger.debug("쿼리 : "+sql);
+			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mv.getMem_id());
 			pstmt.setString(2, mv.getMem_name());
 			pstmt.setString(3, mv.getMem_tel());
 			pstmt.setString(4, mv.getMem_tel());
-
+			
+			paramLogger.debug("파라미터 : (" + mv.getMem_id()
+											+ ", " + mv.getMem_name() 
+											+ ", " + mv.getMem_tel() 
+											+ ", " + mv.getMem_addr() + ")");
+			
 			cnt = pstmt.executeUpdate();
+			
+			resultLogger.warn("결과 : "+cnt);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
