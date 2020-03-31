@@ -59,6 +59,7 @@ public class BoardDaoImp implements IBoardDao{
 		boolean chk = false;
 		
 		try {
+//			BoardVO bv = (BoardVO) smc.queryForObject("board.getBoard", board_no);
 			BoardVO bv = (BoardVO) smc.queryForObject("board.getBoard", board_no);
 			
 			if(bv != null) {

@@ -2,13 +2,16 @@ package homework.iBatis.controller;
 
 import java.util.Scanner;
 
-import iBatis2.service.IMemberService;
-import iBatis2.service.MemberServiceImpl;
+import homework.iBatis.service.BoardServiceImp;
+import homework.iBatis.service.IBoardService;
+import homework.iBatis.vo.BoardVO;
+
+
 
 public class BoardMain {
 
 	
-	private IMemberService service = new MemberServiceImpl();
+	private IBoardService service = BoardServiceImp.getInstance();
 	private Scanner scan = new Scanner(System.in);
 
 	/**
@@ -83,12 +86,57 @@ public class BoardMain {
 	}
 
 	private void insertBoard() {
-		// TODO Auto-generated method stub
+		boolean chk = false;
+		int board_no;
+		String board_title;
+		String board_writer;
+		String board_content;
+		
+		do {
+			System.out.println();
+			System.out.println("추가할 게시판 정보를 입력하세요.");
+			System.out.print("게시판 번호 >> ");
+			board_no = Integer.parseInt(scan.nextLine());
+			
+			chk = service.getBoard(board_no);
+
+			if (chk == true) {
+				System.out.println("추가할 게시판 번호가 " + board_no + "인 게시판은 이미 존재합니다.");
+				System.out.println("다시 입력하세요.");
+			}
+			
+		} while (chk == true);
+		
+		
+		System.out.print("제목 >>");
+		board_title = scan.nextLine();
+		System.out.print("작성자 >>");
+		board_writer = scan.nextLine();
+		System.out.print("내용 >>");
+		board_content = scan.nextLine();
+		
+		BoardVO bVo = new BoardVO();
+		
+		
+		bVo.setBoard_title(board_title);
+		bVo.setBoard_writer(board_writer);
+		bVo.setBoard_content(board_content);
+
+		
+		int cnt = service.insertBoard(bVo);
+		
+		if(cnt > 0) {
+			System.out.println("게시판 추가 작업 성공 ~~");
+		}else {
+			System.out.println("게시판 추가 작업 실패 ㅠㅠ");
+		}
+
 		
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		BoardMain boardMain = new BoardMain();
+		boardMain.start();
 
 	}//main
 

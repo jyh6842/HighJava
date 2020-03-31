@@ -27,31 +27,32 @@
 	 -->
 	 <!-- insert 연습 -->
 	 <insert id ="insertBoard" parameterClass="homework.iBatis.vo.BoardVO">
-	 	insert into mymember (mem_id, mem_name, mem_tel, mem_addr) values(#mem_id#, #mem_name#, #mem_tel#, #mem_addr#)
+	 	insert into jdbc_board (board_no, board_title, board_writer, board_date, board_content) values(board_no.nextVal, #board_title#, sysdate, #board_content#)
 	 </insert>
 	 
 	 <!-- update 연습 -->
 	 <update id = "updateBoard" parameterClass="boardVO">
-	 	update mymember
-	 	set mem_name = #mem_name#
-	 	, mem_tel = #mem_tel#
-	 	, mem_addr = #mem_addr#
-	 	where mem_id = #mem_id#
+	 	update jdbc_board
+	 	set board_title = #board_title#
+	 	, board_writer = #board_writer#
+	 	, board_date = sysdate
+	 	, board_content = #board_content#
+	 	where board_no = #board_no#
 	 </update>
 	 
 	 <!-- delete 연습 -->
 	 <delete id="deleteBoard" parameterClass="String">
-	 	delete from mymember where mem_id = #mem_id#
+	 	delete from jdbc_board where board_no = #board_no#
 	 </delete>
 	 
 	 <!-- select All 연습 -->
 	<select id="getBoardAll" resultClass="boardVO">
-		select * from mymember
+		select * from jdbc_board
 	</select>
 	
 	<!-- select 연습 -->
 	<select id="getBoard" parameterClass="String" resultClass="boardVO"> <!-- SqlMapConfig.xml 에서boardVO 라는 별명을 지음  -->
-		select * from mymember where mem_id = #mem_id#
+		select * from jdbc_board where board_no = #board_no#
 	</select>
 </sqlMap>			
 
