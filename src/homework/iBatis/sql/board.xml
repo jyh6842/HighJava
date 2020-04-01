@@ -49,6 +49,23 @@
 	<select id="getBoard" parameterClass="Integer" resultClass="boardVO"> <!-- SqlMapConfig.xml 에서boardVO 라는 별명을 지음  -->
 		select * from jdbc_board where board_no = #board_no#
 	</select>
+	
+	<!-- select 찾기 -->
+	<select id="getSearchBoard" parameterClass="boardVO" resultClass="boardVO">
+		select * from jdbc_board where 1 = 1
+       <isNotEmpty property="board_no">
+       and board_no = #board_no#
+       </isNotEmpty>
+        <isNotEmpty property="board_title">
+       and board_title = #board_title#
+       </isNotEmpty>
+       <isNotEmpty property="board_writer">
+       and board_writer = #board_writer#
+       </isNotEmpty>
+       <isNotEmpty property="board_content">
+       and board_content like '%'|| #board_content# || '%'
+       </isNotEmpty>
+	</select>
 </sqlMap>			
 
 

@@ -70,37 +70,50 @@ public class BoardMain {
 	private void getSearchBoard() {
 		System.out.println();
 		System.out.println("검색할 정보를 입력하세요 >> ");
-		System.out.print("회원 ID >> ");
-		String memId = scan.nextLine();
-		System.out.print("회원 이름 >> ");
-		String memName = scan.nextLine();
-		System.out.print("회원 전화번호 >> ");
-		String memTel = scan.nextLine();
-		System.out.print("회원 주소 >> ");
-		String memAddr = scan.nextLine();
+		System.out.print("게시판 번호 >> ");
+		int board_no = Integer.parseInt(scan.nextLine());
+		System.out.print("게시판 제목 >> ");
+		String board_title = scan.nextLine();
+		System.out.print("작성자 이름 >> ");
+		String board_writer = scan.nextLine();
+		System.out.print("게시판 내용>> ");
+		String board_content = scan.nextLine();
 		
 		BoardVO bv = new BoardVO();
-		bv.setMem_id(memId);
-		bv.setMem_name(memName);
-		bv.setMem_tel(memTel);
-		bv.setMem_addr(memAddr);
+		bv.setBoard_title(board_title);
+		bv.setBoard_writer(board_writer);
+		bv.setBoard_content(board_content);
+		bv.setBoard_no(board_no);
 		
 		// 입력한 정보를 검색한 내용을 출력하는 부분...
-		List<MemberVO> memList = service.getSearchBoard(bv);
+		List<BoardVO> boardList = service.getSearchBoard(bv);
 		
 		System.out.println();
 		System.out.println("----------------------------------");
 		System.out.println("ID\t이름\t전화번호\t주소");
 		System.out.println("----------------------------------");
 		
-		for (MemberVO mv2 : memList) {
-			System.out.println(mv2.getMem_id()+"\t" + mv2.getMem_name()+"\t"+ mv2.getMem_tel()+"\t" + mv2.getMem_addr());
+		for (BoardVO bv1 : boardList) {
+			System.out.println(bv1.getBoard_no()+"\t" + bv1.getBoard_title()+"\t"+ bv1.getBoard_writer()+"\t" + bv1.getBoard_content()+"\t"+bv1.getBoard_date());
 		}
 		
 	}
 
 	private void displayBoardAll() {
-		// TODO Auto-generated method stub
+		System.out.println();
+		System.out.println("----------------------------------");
+		System.out.println("게시판번호\t게시판이름\t게시판작성자\t게시판내용\t게시판날짜");
+		System.out.println("----------------------------------");
+
+		List<BoardVO> boardList = service.getAllBoardList();
+
+		for (BoardVO bv1 : boardList) {
+			
+					System.out.println(bv1.getBoard_no()+"\t" + bv1.getBoard_title()+"\t"+ bv1.getBoard_writer()+"\t" + bv1.getBoard_content()+"\t"+bv1.getBoard_date());
+		}
+
+		System.out.println("----------------------------------");
+		System.out.println("출력 작업 끝...");
 		
 	}
 

@@ -51,56 +51,42 @@ class ThreadStopEx1 extends Thread{
    }
 }
 
-// interrupt() 메서드를 이용하여 쓰렏르ㅡㄹ 멈추게 하는 방법
+//interrupt() 메서드를 이용하여 쓰레드를 멈추게 하는 방법
 class ThreadStopEx2 extends Thread {
-
-	@Override
-	public void run() {
-		// 방법 1 => sleep() 메서드나 join() 메서드 등을 사용했을 때
-		// interrupt() 메서드를 호출하면 InterruptedException 이발생한다.
-
-		/*
-		try {
-			while (true) {
-				System.out.println("쓰레드 처리중...");
-				Thread.sleep(1);
-			}
-
-		} catch (InterruptedException e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-		*/
-		
-		
-		
-		
-		
-		// 방법 2 => interrupt() 메서드가 호출되엇는지 검사하기
-		while (true) {
-			System.out.println("쓰레드 처리 중...");
-			
-			
-			// 검사방법 1 => 쓰레드의 인스턴스 객체용 메서드를 이용하는 방법
-			if(this.isInterrupted()) { // interrupt() 메서드가 호출되면 true
-				System.out.println("인스턴스용 isinterrupted()");
-				break;
-				
-			}
-			
-			/*
-			// 검사 방법 2 => 쓰레드의 정적 메서드를 이용하는 방법
-			if (Thread.interrupted()) { // interrupt() 메서드가 호출되면 true
-				System.out.println("정적 메서드 isinterrupted()");
-				break;
-			}
-			*/
-			
-		}
-
-	}//run()
-
+ @Override
+ public void run() {
+    /*
+    // 방법1 => sleep()메서드나 join()메서드 등을 사용했을 때,
+    // interrupt()메서드를 호출하면 InterruptedException이 발생한다.
+    try {
+       while (true) {
+          System.out.println("쓰레드 처리 중.....");
+          Thread.sleep(1);
+       }
+    } catch (Exception e) {
+       
+    }
+    
+    */
+    //방법2 => interrupt()메서드가 호출되었는지 검사하기
+    while(true) {
+       System.out.println("쓰레드 처리 중......");
+       /*
+       // 검사방법1 => 쓰레드의 인스턴스객체용 메서드를 이용하는 방법, 현재 실행하는 쓰레드객체의 인터럽트 여부를 체크한다. 즉 서로다른 객체가 호출하면 다 같은 값이 나온다.
+       if(this.isInterrupted()) { //interrupt()메서드가 호출되면 true
+          System.out.println("인스턴스용 isInterrupted()");
+          break;
+       }
+       */
+       //검사방법2 => 쓰레드의 정적 메서드를 이용하는 방법(static메서드) , 한번 호출이 되서 리턴값을 준후 다시 원상복구된다. 서로 다른 객체가 호출하면 다 다른 값이 나온다.
+       if(Thread.interrupted()) {//interrupt()메서드가 호출되면 true
+          System.out.println("정적 메서드 interrupted()");
+          break;
+       }
+       
+       
+    }
+    System.out.println("자원 정리 중.....");
+    System.out.println("실행 종료.");
+ }
 }
-
-
-
