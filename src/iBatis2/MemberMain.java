@@ -170,11 +170,11 @@ public class MemberMain {
 			System.out.print("회원ID >> ");
 			memId = scan.nextLine();
 			chk = service.getMember(memId);
-			if (chk == true) {
+			if (chk != true) {
 				System.out.println("회원ID가 " + memId + "인 회원은 존재하지 않습니다.");
 				System.out.println("다시 입력하세요.");
 			}
-		} while (chk == true);
+		} while (chk != true);
 
 		System.out.print("업데이트 후 회원 이름 >> ");
 		String memName = scan.nextLine();

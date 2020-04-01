@@ -43,7 +43,7 @@ public class BoardDaoImp implements IBoardDao{
 	public int insertBoard(BoardVO bv) {
 		int cnt = 0;
 		try {
-			Object obj = smc.insert("board.insertboard", bv);
+			Object obj = smc.insert("board.insertBoard", bv);
 			if(obj == null) {
 				cnt = 1; //insert 는 null 이 되면 성공한 것
 			}

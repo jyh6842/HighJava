@@ -1,10 +1,12 @@
 package homework.iBatis.controller;
 
+import java.util.List;
 import java.util.Scanner;
 
 import homework.iBatis.service.BoardServiceImp;
 import homework.iBatis.service.IBoardService;
 import homework.iBatis.vo.BoardVO;
+import iBatis2.vo.MemberVO;
 
 
 
@@ -66,7 +68,34 @@ public class BoardMain {
 	
 	
 	private void getSearchBoard() {
-		// TODO Auto-generated method stub
+		System.out.println();
+		System.out.println("검색할 정보를 입력하세요 >> ");
+		System.out.print("회원 ID >> ");
+		String memId = scan.nextLine();
+		System.out.print("회원 이름 >> ");
+		String memName = scan.nextLine();
+		System.out.print("회원 전화번호 >> ");
+		String memTel = scan.nextLine();
+		System.out.print("회원 주소 >> ");
+		String memAddr = scan.nextLine();
+		
+		BoardVO bv = new BoardVO();
+		bv.setMem_id(memId);
+		bv.setMem_name(memName);
+		bv.setMem_tel(memTel);
+		bv.setMem_addr(memAddr);
+		
+		// 입력한 정보를 검색한 내용을 출력하는 부분...
+		List<MemberVO> memList = service.getSearchBoard(bv);
+		
+		System.out.println();
+		System.out.println("----------------------------------");
+		System.out.println("ID\t이름\t전화번호\t주소");
+		System.out.println("----------------------------------");
+		
+		for (MemberVO mv2 : memList) {
+			System.out.println(mv2.getMem_id()+"\t" + mv2.getMem_name()+"\t"+ mv2.getMem_tel()+"\t" + mv2.getMem_addr());
+		}
 		
 	}
 
@@ -76,12 +105,60 @@ public class BoardMain {
 	}
 
 	private void updateBoard() {
-		// TODO Auto-generated method stub
+		boolean chk = false; // 중복여부 체크
+		int board_no;
+
+		do {
+			System.out.println();
+			System.out.println("수정할 게시판 정보를 입력하세요.");
+			System.out.print("게시판 번호 >> ");
+			board_no = Integer.parseInt(scan.nextLine());
+			chk = service.getBoard(board_no);
+			if (chk != true) {
+				System.out.println("게시판 번호가 " + board_no + "인 게시판은 존재하지 않습니다.");
+				System.out.println("다시 입력하세요.");
+			}
+		} while (chk != true);
+
+		System.out.print("업데이트 후 게시판 제목 >> ");
+		String board_title = scan.nextLine();
+
+		System.out.print("업데이트 후 게시판 작성자>> ");
+		String board_writer = scan.nextLine();
+
+//			scan.nextLine(); // 입력버퍼 지우기 있으면 에러
+		System.out.print("업데이트 후 게시판 내용 >> ");
+		String board_content = scan.nextLine();
+		BoardVO bVo = new BoardVO();
+		
+		bVo.setBoard_no(board_no);
+		bVo.setBoard_title(board_title);
+		bVo.setBoard_writer(board_writer);;
+		bVo.setBoard_content(board_content);
+		
+
+		int cnt = service.updateBoard(bVo);
+
+		if (cnt > 0) {
+			System.out.println(board_no + "게시판 정보를 수정했습니다!");
+		} else {
+			System.out.println(board_no + "게시판 정보 수정 작업 실패!");
+		}
 		
 	}
 
 	private void deleteBoard() {
-		// TODO Auto-generated method stub
+		System.out.println();
+		System.out.println("삭제할 번호를 입력하세요 >> ");
+		int board_no = Integer.parseInt(scan.nextLine());
+
+		int cnt = service.deleteBoard(board_no);
+
+		if (cnt > 0) {
+			System.out.println(board_no + "게시판 삭제 성공 ~~~~~");
+		} else {
+			System.out.println(board_no + "게시판 삭제 실패 ㅠㅠㅠㅠ");
+		}
 		
 	}
 
@@ -92,21 +169,8 @@ public class BoardMain {
 		String board_writer;
 		String board_content;
 		
-		do {
-			System.out.println();
-			System.out.println("추가할 게시판 정보를 입력하세요.");
-			System.out.print("게시판 번호 >> ");
-			board_no = Integer.parseInt(scan.nextLine());
-			
-			chk = service.getBoard(board_no);
-
-			if (chk == true) {
-				System.out.println("추가할 게시판 번호가 " + board_no + "인 게시판은 이미 존재합니다.");
-				System.out.println("다시 입력하세요.");
-			}
-			
-		} while (chk == true);
-		
+		System.out.println();
+		System.out.println("추가할 게시판 정보를 입력하세요.");
 		
 		System.out.print("제목 >>");
 		board_title = scan.nextLine();
