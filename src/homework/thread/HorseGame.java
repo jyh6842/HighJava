@@ -1,38 +1,21 @@
 package homework.thread;
 
 public class HorseGame {
-	
+	{
+		Horse[] horse = new Horse[] { 
+				new Horse(horseNumber[0]), new Horse(horseNumber[1]), new Horse(horseNumber[2]),
+				new Horse(horseNumber[3]), new Horse(horseNumber[4]), new Horse(horseNumber[5]),
+				new Horse(horseNumber[6]), new Horse(horseNumber[7]), new Horse(horseNumber[8]),
+				new Horse(horseNumber[9]) };
+	}
 	static String horseNumber[] = new String[10];
+	
 
+
+	
 	public static void main(String[] args) {
-		for (int i = 0; i < args.length; i++) {
-			horseNumber[i] = i+1 +"번말";
-		}
-		Horse[] horse = new Horse[] {
-				new Horse(horseNumber[0]),
-				new Horse(horseNumber[1]),
-				new Horse(horseNumber[2]),
-				new Horse(horseNumber[3]),
-				new Horse(horseNumber[4]),
-				new Horse(horseNumber[5]),
-				new Horse(horseNumber[6]),
-				new Horse(horseNumber[7]),
-				new Horse(horseNumber[8]),
-				new Horse(horseNumber[9])
-		};
+
 		
-		for(int i = 0; i < horse.length; i++) {
-			horse[i].start();
-			
-	      }
-	      
-	      for(Horse hs : horse) {
-	         try {
-	            hs.join();
-	         }catch(InterruptedException e) {
-	            e.printStackTrace();
-	         }
-	      }
 
 
 	}//main
@@ -41,6 +24,8 @@ public class HorseGame {
 
 class Horse extends Thread{
 	private String name;
+	
+
 	private String initHorse[] = new String[50];
 	
 	Horse(String name) {
@@ -50,6 +35,7 @@ class Horse extends Thread{
 			initHorse[i] ="-";
 		}
 	}
+
 	
 	@Override
 	public void run() {
@@ -98,4 +84,35 @@ class Horse extends Thread{
 		System.out.println(HorseGame.horseNumber[9]);
 	}
 	
+}
+
+class HorseVO {
+	String name;
+	boolean[] position = new boolean[50];
+	
+	public HorseVO(String name) {
+		super();
+		this.name = name;
+		
+		for (int i = 0; i < position.length; i++) {
+			this.position = position;
+		}
+		
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public boolean[] getPosition() {
+		return position;
+	}
+	public void setPosition(boolean[] position) {
+		this.position = position;
+	}
+	
+	
+	
+
 }
