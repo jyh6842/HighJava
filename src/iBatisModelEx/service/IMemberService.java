@@ -1,16 +1,11 @@
-package iBatis2.dao;
+package iBatisModelEx.service;
 
 import java.util.List;
 
-import iBatis2.vo.MemberVO;
+import iBatisModelEx.vo.MemberVO;
 
-/**
- * 실제 DB와 연결해서 SQL문을 수행후 결과를 작성하여
- * Service에 전달하는 DAO의 interface 
- * @author Jeon
- *
- */
-public interface IMemberDao {
+public interface IMemberService {
+	
 	/**
 	 * MemberVO 에 담겨진 자료를 DB에 insert하는 메서드
 	 * @param mv DB에 insert할 자료가 저장된 MemberVO 객체
@@ -52,22 +47,4 @@ public interface IMemberDao {
 	 * @return 검색된 결과를 담을 List
 	 */
 	public List<MemberVO> getSearchMember(MemberVO mv);
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

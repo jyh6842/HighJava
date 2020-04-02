@@ -1,10 +1,10 @@
-package iBatis2.service;
+package iBatisModelEx.service;
 
 import java.util.List;
 
-import iBatis2.dao.IMemberDao;
-import iBatis2.dao.MemberDaoImpl;
-import iBatis2.vo.MemberVO;
+import iBatisModelEx.dao.IMemberDao;
+import iBatisModelEx.dao.MemberDaoImpl;
+import iBatisModelEx.vo.MemberVO;
 
 public class MemberServiceImpl implements IMemberService {
 

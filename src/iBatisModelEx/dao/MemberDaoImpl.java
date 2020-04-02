@@ -1,4 +1,4 @@
-package iBatis2.dao;
+package iBatisModelEx.dao;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -14,7 +14,7 @@ import com.ibatis.common.resources.Resources;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.ibatis.sqlmap.client.SqlMapClientBuilder;
 
-import iBatis2.vo.MemberVO;
+import iBatisModelEx.vo.MemberVO;
 
 public class MemberDaoImpl implements IMemberDao {
 /*
@@ -31,7 +31,7 @@ public class MemberDaoImpl implements IMemberDao {
 	private MemberDaoImpl() {
 		Reader rd;
 		try {
-			rd = Resources.getResourceAsReader("sqlMapConfig2.xml");
+			rd = Resources.getResourceAsReader("SqlMapConfigIBatisModelEx.xml");
 			smc = SqlMapClientBuilder.buildSqlMapClient(rd);
 			rd.close();
 		}catch (IOException e) {

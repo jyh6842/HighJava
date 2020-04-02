@@ -33,7 +33,7 @@
 	 </insert>
 	 
 	 <!-- update 연습 -->
-	 <update id = "updateMember" parameterClass="iBatis2.vo.MemberVO">
+	 <update id = "updateMember" parameterClass="iBatisModelEx.vo.MemberVO">
 	 	update mymember
 	 	set mem_name = #mem_name#
 	 	, mem_tel = #mem_tel#
@@ -47,7 +47,7 @@
 	 </delete>
 	 
 	 <!-- select All 연습 -->
-	<select id="getMemberAll" resultClass="iBatis2.vo.MemberVO">
+	<select id="getMemberAll" resultClass="iBatisModelEx.vo.MemberVO">
 		select * from mymember
 	</select>
 	

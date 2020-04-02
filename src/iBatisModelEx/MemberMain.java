@@ -1,11 +1,11 @@
-package iBatis2;
+package iBatisModelEx;
 
 import java.util.List;
 import java.util.Scanner;
 
-import iBatis2.service.IMemberService;
-import iBatis2.service.MemberServiceImpl;
-import iBatis2.vo.MemberVO;
+import iBatisModelEx.service.IMemberService;
+import iBatisModelEx.service.MemberServiceImpl;
+import iBatisModelEx.vo.MemberVO;
 
 public class MemberMain {
 

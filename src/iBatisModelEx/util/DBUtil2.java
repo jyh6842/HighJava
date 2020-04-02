@@ -1,4 +1,4 @@
-package iBatis2.util;
+package iBatisModelEx.util;
 
 import java.io.File;
 import java.io.FileInputStream;
