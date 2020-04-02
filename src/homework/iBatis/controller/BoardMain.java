@@ -6,7 +6,7 @@ import java.util.Scanner;
 import homework.iBatis.service.BoardServiceImp;
 import homework.iBatis.service.IBoardService;
 import homework.iBatis.vo.BoardVO;
-import iBatis2.vo.MemberVO;
+import iBatisModelEx.vo.MemberVO;
 
 
 
