@@ -20,7 +20,9 @@ public class HorseGame {
 // 말에 대한 정보 및 클래스
 class HorseVO extends Thread implements Comparable<HorseVO>{
 	private String horseName;
-	private String 
+	private int position; // 말의 위치
+	private int rank; // 말이 들어온 순서
+	private volatile boolean goal = false;
 
 	public HorseVO() {
 		
