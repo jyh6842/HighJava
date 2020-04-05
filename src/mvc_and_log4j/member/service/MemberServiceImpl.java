@@ -1,10 +1,10 @@
-package mvc.member.service;
+package mvc_and_log4j.member.service;
 
 import java.util.List;
 
-import mvc.member.dao.IMemberDao;
-import mvc.member.dao.MemberDaoImpl;
-import mvc.member.vo.MemberVO;
+import mvc_and_log4j.member.dao.IMemberDao;
+import mvc_and_log4j.member.dao.MemberDaoImpl;
+import mvc_and_log4j.member.vo.MemberVO;
 
 public class MemberServiceImpl implements IMemberService{
 

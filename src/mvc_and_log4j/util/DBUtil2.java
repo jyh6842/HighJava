@@ -1,4 +1,4 @@
-package mvc.util;
+package mvc_and_log4j.util;
 
 /*
  * db.properties 파일의 내용으로 DB정보를 설정하는 방법

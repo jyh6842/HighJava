@@ -1,4 +1,4 @@
-package mvc.member;
+package mvc_and_log4j.member;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,10 +8,10 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.Scanner;
 
-import mvc.member.service.IMemberService;
-import mvc.member.service.MemberServiceImpl;
-import mvc.member.vo.MemberVO;
-import mvc.util.DBUtil;
+import mvc_and_log4j.member.service.IMemberService;
+import mvc_and_log4j.member.service.MemberServiceImpl;
+import mvc_and_log4j.member.vo.MemberVO;
+import mvc_and_log4j.util.DBUtil;
 
 public class MemberMain {
 

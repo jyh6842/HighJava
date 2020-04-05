@@ -1,4 +1,4 @@
-package mvc.member.dao;
+package mvc_and_log4j.member.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,8 +10,8 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import mvc.member.vo.MemberVO;
-import mvc.util.DBUtil;
+import mvc_and_log4j.member.vo.MemberVO;
+import mvc_and_log4j.util.DBUtil;
 
 public class MemberDaoImpl implements IMemberDao {
 

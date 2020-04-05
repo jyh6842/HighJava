@@ -1,8 +1,8 @@
-package mvc.member.dao;
+package mvc_and_log4j.member.dao;
 
 import java.util.List;
 
-import mvc.member.vo.MemberVO;
+import mvc_and_log4j.member.vo.MemberVO;
 
 /**
  * 실제 DB와 연결해서 SQL문을 수행후 결과를 작성하여

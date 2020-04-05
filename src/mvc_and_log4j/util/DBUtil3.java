@@ -1,4 +1,4 @@
-package mvc.util;
+package mvc_and_log4j.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

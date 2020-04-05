@@ -1,8 +1,8 @@
-package mvc.member.service;
+package mvc_and_log4j.member.service;
 
 import java.util.List;
 
-import mvc.member.vo.MemberVO;
+import mvc_and_log4j.member.vo.MemberVO;
 
 public interface IMemberService {
 	
