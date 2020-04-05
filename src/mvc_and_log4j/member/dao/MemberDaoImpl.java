@@ -59,7 +59,7 @@ public class MemberDaoImpl implements IMemberDao {
 
 			String sql = "insert into mymember (mem_id, mem_name, mem_tel, mem_addr) values(?, ?, ?, ?)";
 
-			sqlLogger.debug("쿼리 : "+sql);
+			//sqlLogger.debug("쿼리 : "+sql);// logger
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, mv.getMem_id());
@@ -67,15 +67,15 @@ public class MemberDaoImpl implements IMemberDao {
 			pstmt.setString(3, mv.getMem_tel());
 			pstmt.setString(4, mv.getMem_tel());
 			
-			paramLogger.debug("파라미터 : (" + mv.getMem_id()
+			/*paramLogger.debug("파라미터 : (" + mv.getMem_id()
 											+ ", " + mv.getMem_name() 
 											+ ", " + mv.getMem_tel() 
 											+ ", " + mv.getMem_addr() + ")");
-			
+			*/
 			cnt = pstmt.executeUpdate();
-			
+			/*
 			resultLogger.warn("결과 : "+cnt);
-
+*/
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
