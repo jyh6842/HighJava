@@ -1,11 +1,11 @@
-package homework.jdbc.mvc.controller;
+package homework.jdbc.MVC.controller;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import homework.jdbc.mvc.service.BoardService;
-import homework.jdbc.mvc.vo.BoardVO;
+import homework.jdbc.MVC.service.BoardService;
+import homework.jdbc.MVC.vo.BoardVO;
 
 
 

@@ -1,9 +1,9 @@
-package homework.jdbc.mvc.service;
+package homework.jdbc.MVC.service;
 
 import java.util.List;
 
-import homework.jdbc.mvc.dao.BoardDao;
-import homework.jdbc.mvc.vo.BoardVO;
+import homework.jdbc.MVC.dao.BoardDao;
+import homework.jdbc.MVC.vo.BoardVO;
 
 public class BoardService {
 

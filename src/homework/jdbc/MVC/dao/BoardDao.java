@@ -1,4 +1,4 @@
-package homework.jdbc.mvc.dao;
+package homework.jdbc.MVC.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import homework.jdbc.mvc.db.DBUtil;
-import homework.jdbc.mvc.vo.BoardVO;
+import homework.jdbc.MVC.db.DBUtil;
+import homework.jdbc.MVC.vo.BoardVO;
 
 public class BoardDao {
 	

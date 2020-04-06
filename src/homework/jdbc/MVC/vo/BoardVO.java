@@ -1,4 +1,4 @@
-package homework.jdbc.mvc.vo;
+package homework.jdbc.MVC.vo;
 
 import java.util.Date;
 

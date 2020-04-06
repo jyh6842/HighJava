@@ -1,4 +1,4 @@
-package homework.jdbc.mvc.db;
+package homework.jdbc.MVC.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
