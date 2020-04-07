@@ -32,7 +32,7 @@ public class T04_ByteArrayIOTest { // 877
 				
 				int len = input.read(temp); // 내가 몇 바이트를 읽었는지
 				output.write(temp, 0, len); // 0은 기준 인덱스 값, 3번째는 내가 몇바이트를 읽었는지
-				
+				// 질문 output을 하지 않으면 input 에 있는 값이 사라지지 않는것인가?
 				System.out.println("temp : " + Arrays.toString(temp));
 			}
 			
