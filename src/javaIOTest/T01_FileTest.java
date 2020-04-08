@@ -54,19 +54,19 @@ public class T01_FileTest { // 868
                    => 위 두 메서드 모두 만들기를 성공하면, true, 실패하면 false반환함
        */
       System.out.println("5번");
-      File file5 = new File("d:/D_Other/연습용");
+      File file5 = new File("d:/D_Other/연습용 ");
       if(file5.mkdir()){
-         System.out.println(file5.getName() + "만들기 성공!");
+         System.out.println(file5.getName() + " 만들기 성공!");
       }else {
-         System.out.println(file5.getName() + "만들기 실패!");
+         System.out.println(file5.getName() + " 만들기 실패!");
       }
       System.out.println();
       System.out.println("6번");
-      File file6 = new File("d:/D_Other/test/java/src");
-      if(file6.mkdirs()){//없으면 true
-         System.out.println(file6.getName() + "만들기 성공!");
+      File file6 = new File("d:/D_Other/test/java/src ");
+      if(file6.mkdirs()){//없으면 true //s를 붙이면 중간의 경로도 만든다.
+         System.out.println(file6.getName() + " 만들기 성공!");
       }else {
-         System.out.println(file6.getName() + "만들기 실패!");
+         System.out.println(file6.getName() + " 만들기 실패!");
       }
       System.out.println();
    }
