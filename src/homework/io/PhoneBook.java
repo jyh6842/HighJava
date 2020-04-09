@@ -2,10 +2,15 @@ package homework.io;
 
 
 import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -74,11 +79,38 @@ public class PhoneBook {
 	private Scanner scan;
 	private Map<String, Phone> phoneBookMap;
 	
-	public PhoneBook() throws FileNotFoundException, IOException {
+	public PhoneBook(){
 		scan = new Scanner(System.in);
 		phoneBookMap = new HashMap<>();
 		
-		ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream("d:/Other/phone.bin")));
+		
+		
+		try {
+			
+			ObjectInputStream ois = new ObjectInputStream(new BufferedInputStream(new FileInputStream("d:/D_Other/phone.bin")));
+			
+			Object obj = null;
+			
+			try {
+				while((obj=ois.readObject())!= null) {
+					Phone p = (Phone) obj;
+					phoneBookMap.put(p.getName(), p);
+					
+				}
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			finally {
+				ois.close();
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	// 메뉴를 출력하는 메서드
@@ -118,12 +150,41 @@ public class PhoneBook {
 				case 5 : displayAll();	// 전체 출력
 					break;
 				case 0 :
+					System.out.println("저장중 ...");
+					save();
 					System.out.println("프로그램을 종료합니다...");
 					return;
 				default :
 					System.out.println("잘못 입력했습니다. 다시입력하세요.");
 			} // switch문
 		} // while문
+	}
+
+	private void save() {
+		try {
+			ObjectOutputStream oos = new ObjectOutputStream(
+					new BufferedOutputStream(new FileOutputStream("d:/D_Other/phone.bin")));
+
+			Set<String> keyset = phoneBookMap.keySet();
+
+			Iterator<String> it = keyset.iterator();
+			while (it.hasNext()) {
+				String name = it.next();
+				Phone p = phoneBookMap.get(name);
+				oos.writeObject(p);
+			}
+
+			oos.close();
+			System.out.println("파일이 외부로 출력되었습니다.");
+
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	/**
@@ -255,6 +316,22 @@ public class PhoneBook {
 	}
 	
 	public static void main(String[] args) {
+		File f1 = new File("d:/D_Other/phone.bin");
+
+		if (f1.exists()) {
+			System.out.println(f1.getAbsolutePath() + "는 존재하는 파일 입니다.");
+		} else {
+			System.out.println(f1.getAbsolutePath() + "존재하지 않는 파일 입니다.");
+			try {
+				if (f1.createNewFile()) {
+					System.out.println(f1.getAbsolutePath() + " 파일을 새로 만들었습니다.");
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 		new PhoneBook().phoneBookStart();
 	}
 		
@@ -268,7 +345,7 @@ public class PhoneBook {
  * 전화번호 정보를 저장하기 위한 VO 클래스
  *
  */
-class Phone{
+class Phone implements Serializable {
 	private String name;	// 이름
 	private String tel;		// 전화번호
 	private String addr;	// 주소
