@@ -114,8 +114,17 @@ public class Fx_controlObject extends Application{
 			@Override
 			public void handle(ActionEvent event) {
 				//textArea.setText(nameTextField.getText());
-				textArea.setText(nameTextField.getText());
-//				textArea.appendText(group.);
+				textArea.setText(nameTextField.getText() + " ");
+				
+				textArea.appendText(((RadioButton)group.getSelectedToggle()).getText()+" ");
+				for (int i = 0; i < checkBoxList.size(); i++) {
+					if(checkBoxList.get(i).isSelected()) {
+						textArea.appendText(checkBoxList.get(i).getText() + " ");
+						
+					}
+				}
+				
+				
 				
 			}
 		});
