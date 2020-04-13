@@ -32,7 +32,7 @@ public class T09_ComboBoxTest extends Application {
 		combo.valueProperty().addListener(new ChangeListener<String>() {
 
 			@Override
-			public void changed(
+			public void changed( // 바꿧을때 값이 적용된다?
 					ObservableValue<? extends String> observable, 
 					String oldValue, String newValue) {
 				//String temp = combo.getItems().get(0); //첫번째 컬럼 가져오기

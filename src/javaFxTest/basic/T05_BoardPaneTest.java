@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 	- top, bottom, left, right 에 배치하지 않으면 center에 배치된 컨트롤이 
 		사방으로 자동확장 된다.
  */
-public class BoardPaneTest extends Application {
+public class T05_BoardPaneTest extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
