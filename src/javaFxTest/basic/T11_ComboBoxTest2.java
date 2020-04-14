@@ -46,9 +46,9 @@ public class T11_ComboBoxTest2 extends Application {
 			public ListCell<MyFriend> call(ListView<MyFriend> param) {
 				// TODO Auto-generated method stub
 				return new ListCell<MyFriend>() {
-					protected void updateItem(MyFriend item, 
+					protected void updateItem(MyFriend item,  //각각의 셀을 만들어줌
 												boolean empty) {
-						super.updateItem(item, empty); // ??? 이걸 왜 하는 거지?
+						super.updateItem(item, empty); // ??? 이걸 왜 하는 거지? // 원래 셀을 만드는 역할을 하던 애임 꼭 있어야 함
 						if(item == null || empty) { 
 							setText(null); // 여기가 코딩해 주는 부분 값이 있으면 else로
 						}else {
@@ -64,8 +64,8 @@ public class T11_ComboBoxTest2 extends Application {
 		// ComboBox에서 리스트 항목을 선택하면 선택된 내용이 
 		// ComboBox의 '버튼영역'에 나타나는데
 		// 이 부분의 내용도 변경해 주어야 한다.
-		combo.setButtonCell(new ListCell<MyFriend>() { //buttonCell 에기 없으면 button이 없으면 객체 정보가 그대로 노출
-			protected void updateItem(MyFriend item, boolean empty) {
+		combo.setButtonCell(new ListCell<MyFriend>() { //buttonCell 이 친구 없으면 button이 없으면 객체 정보가 그대로 노출
+			protected void updateItem(MyFriend item, boolean empty) { //updateItem 커스텀 했다.
 				super.updateItem(item, empty);
 				if(empty) {
 					setText(null);
