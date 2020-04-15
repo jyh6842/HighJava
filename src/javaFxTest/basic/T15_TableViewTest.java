@@ -20,7 +20,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class T15_TaableViewTest extends Application {
+public class T15_TableViewTest extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// TableView에 나타낼 데이터 구성기
