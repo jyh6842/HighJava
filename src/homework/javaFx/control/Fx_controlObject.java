@@ -1,4 +1,4 @@
-package homework.javaFx;
+package homework.javaFx.control;
 
 import java.util.ArrayList;
 import java.util.List;

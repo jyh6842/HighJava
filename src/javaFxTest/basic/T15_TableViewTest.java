@@ -46,7 +46,7 @@ public class T15_TableViewTest extends Application {
 		TableColumn<Member, String> engNameCol = new TableColumn<Member, String>("영어이름");
 		engNameCol.setCellValueFactory(new PropertyValueFactory<>("engName"));
 		// 컬럼 병합하기
-		nameCol.getColumns().addAll(kornameCol, engNameCol);
+		nameCol.getColumns().addAll(kornameCol, engNameCol);// 병합하는 부분
 
 		TableColumn<Member, Integer> ageCol = new TableColumn<>("나이");
 		ageCol.setCellValueFactory(new PropertyValueFactory<>("age"));
@@ -83,6 +83,7 @@ public class T15_TableViewTest extends Application {
 		grid.add(txt3, 3, 1);
 		grid.add(txt4, 4, 1);
 		grid.add(txt5, 5, 1);
+		
 
 		grid.add(txtKorName, 1, 2);
 		grid.add(txtEngName, 2, 2);
@@ -103,7 +104,7 @@ public class T15_TableViewTest extends Application {
 				errMsg("작업오류", "빈 항목이 있습니다.");
 				return;
 			}
-			if (!Pattern.matches("^[0-9]+$", txtAge.getText())) { // 데이터에 대한 내용 검사 숫자형이 아니면 에러 발생
+			if (!Pattern.matches("^[0-9]+$", txtAge.getText())) { // 데이터에 대한 내용 검사 숫자형이 아니면 에러 발생 // $ 끝이라는 끝 숫자만 올 수 있다.
 				errMsg("데이터 오류", "나이는 정수형으로 입력하세요");
 				txtAge.requestFocus(); // 해당 객체에 포커스 추가
 				return;
@@ -119,7 +120,7 @@ public class T15_TableViewTest extends Application {
 			txtAddr.clear();
 			txtTel.clear();
 			txtAddr.clear();
-		});
+		});//btnAdd
 
 		Button btnEdit = new Button("수정");
 		btnEdit.setOnAction(e -> {
@@ -151,11 +152,12 @@ public class T15_TableViewTest extends Application {
 
 		Button btnDel = new Button("삭제");
 		btnDel.setOnAction(e -> {
-			if (table.getSelectionModel().isEmpty()) {
+			if (table.getSelectionModel().isEmpty()) {// 선택되지 않았으면
 				errMsg("작업오류", "삭제할 자료를 선택한 후 삭제하세요");
+				return;
 			}
 
-			data.remove(table.getSelectionModel().getSelectedIndex());
+			data.remove(table.getSelectionModel().getSelectedIndex()); // 인덱스가 필요하면 getSelectedIndex
 
 			infoMsg("작업결과", txtKorName.getText() + "님 정보를 삭제했습니다.");
 
@@ -166,10 +168,10 @@ public class T15_TableViewTest extends Application {
 			txtAddr.clear();
 		});
 
-		// TableView르리 클릭했을대 처리
+		// TableView를 클릭했을 때 처리
 		table.setOnMouseClicked(e -> {
 			// TableView 에서 선택한 줄의 데이터를 얻는다.
-			Member mem = table.getSelectionModel().getSelectedItem();
+			Member mem = table.getSelectionModel().getSelectedItem(); // 속에 들어 있는 값들이 필요하면 getSelectedItem
 
 			txtKorName.setText(mem.getKorName());
 			txtEngName.setText(mem.getEngName());
@@ -184,7 +186,7 @@ public class T15_TableViewTest extends Application {
 			// ReadOnly를 설정하는 메서드 => setEditable()
 			// 이 메서드에 true를 설정하면 '입력가능'
 			// false 를 설정하면 '일기전용' 이 된다.
-			txtKorName.setEditable(false);
+			txtKorName.setEditable(false); // 변경 못함
 			txtEngName.setEditable(false);
 
 			// 객체를 활성화 또는 비활성화 시키는 메서드 => setDisabled()
@@ -226,11 +228,11 @@ public class T15_TableViewTest extends Application {
 	}
 
 	private void infoMsg(String headerText, String msg) {
-		Alert errAlert = new Alert(AlertType.ERROR);
-		errAlert.setTitle("오류");
-		errAlert.setHeaderText(headerText);
-		errAlert.setContentText(msg);
-		errAlert.showAndWait();
+		Alert infoAlert = new Alert(AlertType.INFORMATION);
+		infoAlert.setTitle("정보 확인");
+		infoAlert.setHeaderText(headerText);
+		infoAlert.setContentText(msg);
+		infoAlert.showAndWait();
 	}
 
 	private void errMsg(String headerText, String msg) {

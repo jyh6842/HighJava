@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:controller="javaFxTest.basic.t16_paging.PagingController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TableView fx:id="tv" prefHeight="341.0" prefWidth="600.0">
+        <columns>
+          <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="name" prefWidth="75.0" text="이름" />
+            <TableColumn fx:id="addr" prefWidth="75.0" text="주소" />
+        </columns>
+      </TableView>
+      <Pagination fx:id="pn" layoutX="-4.0" layoutY="-3.0" prefHeight="445.0" prefWidth="606.0" />
+   </children>
+</AnchorPane>
