@@ -50,6 +50,9 @@ public class MemberController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
+		btncancel.setDisable(true);
+		btnok.setDisable(true);
+
 		ObservableList<MemberVO> data = FXCollections.observableArrayList();
 
 		membertableview.setItems(data);
@@ -66,20 +69,126 @@ public class MemberController implements Initializable {
 				return;
 			}
 
-			data.add(new MemberVO(textid.getText(), textname.getText(), texttel.getText(), textaddr.getText()));
+			errMsg("추가?", "정말로 추가 하시려면 확인 버튼 꾹!!");
+			// 나머지 비활성화
 
-			infoMsg("작업결과", textid.getText() + "님 정보를 추가 성공~");
+			btnadd.setDisable(true);
+			btnedit.setDisable(true);
+			btndel.setDisable(true);
+			btncancel.setDisable(false);
+			btnok.setDisable(false);
+
+			// 
+			textid.setEditable(false);
+			textname.setEditable(false);
+			texttel.setEditable(false);
+			textaddr.setEditable(false);
+
+			btnok.setOnAction(e2 -> { // 추가, 수정, 삭제 가 다 여기에서 이루어져야 한다.?
+
+				data.add(new MemberVO(textid.getText(), textname.getText(), texttel.getText(), textaddr.getText()));
+
+				infoMsg("작업결과", textid.getText() + "님 정보를 추가 성공~");
+
+				btnadd.setDisable(false);
+				btnedit.setDisable(false);
+				btndel.setDisable(false);
+				btncancel.setDisable(true);
+				btnok.setDisable(true);
+				
+				textid.setEditable(true);
+				textname.setEditable(true);
+				texttel.setEditable(true);
+				textaddr.setEditable(true);
+
+				textid.clear();
+				textname.clear();
+				texttel.clear();
+				textaddr.clear();
+
+			});
+
 		});// btnadd
 
 		btnedit.setOnAction(e -> {
+
 			if (textid.getText().isEmpty() || textname.getText().isEmpty() || texttel.getText().isEmpty()
 					|| textaddr.getText().isEmpty()) {
 				errMsg("빈칸을 확인", "빈칸을 채우세요");
 				return;
 			}
+			
+			btnadd.setDisable(true);
+			btnedit.setDisable(true);
+			btndel.setDisable(true);
+			btncancel.setDisable(false);
+			btnok.setDisable(false);
 
-			data.set(membertableview.getSelectionModel().getSelectedIndex(),
-					new MemberVO(textid.getText(), textname.getText(), texttel.getText(), textaddr.getText()));
+
+			btnok.setOnAction(e2 -> { // 추가, 수정, 삭제 가 다 여기에서 이루어져야 한다.?
+
+				data.set(membertableview.getSelectionModel().getSelectedIndex(),
+						new MemberVO(textid.getText(), textname.getText(), texttel.getText(), textaddr.getText()));
+
+				infoMsg("작업결과", textid.getText() + "님 정보 수정 성공~");
+
+				btnadd.setDisable(false);
+				btnedit.setDisable(false);
+				btndel.setDisable(false);
+				btncancel.setDisable(true);
+				btnok.setDisable(true);
+				
+				textid.setEditable(true);
+				textname.setEditable(true);
+				texttel.setEditable(true);
+				textaddr.setEditable(true);
+
+				textid.clear();
+				textname.clear();
+				texttel.clear();
+				textaddr.clear();
+
+			});
+
+		});
+
+		btndel.setOnAction(e -> {
+			data.remove(membertableview.getSelectionModel().getSelectedIndex());
+		});
+
+		btnok.setOnAction(e -> { // 추가, 수정, 삭제 가 다 여기에서 이루어져야 한다.?
+
+			data.add(new MemberVO(textid.getText(), textname.getText(), texttel.getText(), textaddr.getText()));
+
+			infoMsg("작업결과", textid.getText() + "님 정보를 추가 성공~");
+
+			btnadd.setDisable(false);
+			btnedit.setDisable(false);
+			btndel.setDisable(false);
+			btncancel.setDisable(true);
+			btnok.setDisable(true);
+
+			textid.clear();
+			textname.clear();
+			texttel.clear();
+			textaddr.clear();
+
+		});
+
+		btncancel.setOnAction(e -> {
+			textid.clear();
+			textname.clear();
+			texttel.clear();
+			textaddr.clear();
+		});
+
+		membertableview.setOnMouseClicked(e2 -> {
+			MemberVO memberVO = membertableview.getSelectionModel().getSelectedItem();
+
+			textid.setText(memberVO.getId());
+			textname.setText(memberVO.getName());
+			texttel.setText(memberVO.getTel());
+			textaddr.setText(memberVO.getAddr());
 		});
 
 	}
