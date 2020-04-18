@@ -5,6 +5,7 @@ public class MemberVO {
 	private String name;
 	private String tel;
 	private String addr;
+	
 	public MemberVO(String id, String name, String tel, String addr) {
 		super();
 		this.id = id;
@@ -12,6 +13,7 @@ public class MemberVO {
 		this.tel = tel;
 		this.addr = addr;
 	}
+	
 	public String getId() {
 		return id;
 	}

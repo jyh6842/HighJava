@@ -78,7 +78,7 @@ public class T11_ComboBoxTest2 extends Application {
 		combo.setValue(list.get(0));
 		
 		// ComboBox를 setOnAction 처리하기
-/*		
+	
 		combo.setOnAction(new EventHandler<ActionEvent>() {
 			
 			@Override
@@ -93,7 +93,7 @@ public class T11_ComboBoxTest2 extends Application {
 				result.appendText(data.getAddr() + "\n");
 			}
 		});
-*/
+
 //		combo.valueProperty().add
 		// 차이점은 요런 정보들을 호출 할때 불러줌 이게 더 많이 불러옴
 		

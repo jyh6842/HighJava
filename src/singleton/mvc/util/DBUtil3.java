@@ -9,7 +9,7 @@ public class DBUtil3 {
 	static ResourceBundle bundle; //ResourceBundle 객체변수 선언
 	
 	static {
-		bundle = ResourceBundle.getBundle("db");//객체 생성
+		bundle = ResourceBundle.getBundle("db");//객체 생성 //res 폴더에있는 db.properties
 		try {
 			Class.forName(bundle.getString("driver"));
 		}catch (ClassNotFoundException e) {
