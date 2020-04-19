@@ -23,8 +23,7 @@ public class PostController implements Initializable {
 
 	@FXML
 	private ComboBox<String> comSelect;
-	@FXML
-	private TextField tfield;
+
 	@FXML
 	private Button btnseasrch;
 	@FXML
@@ -41,6 +40,8 @@ public class PostController implements Initializable {
 	private TableColumn<PostVO, String> tv_addr;
 
 	public IPostService service;
+
+	@FXML TextField tfield;
 
 	public PostController() {
 		service = PostService.getInstance();
