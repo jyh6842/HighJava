@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:controller="homework.javaFx.records.controller.addModalController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="126.0" layoutY="97.0" text="이름" />
+      <Label layoutX="126.0" layoutY="130.0" text="국어" />
+      <Label layoutX="126.0" layoutY="168.0" text="수학" />
+      <Label layoutX="126.0" layoutY="208.0" text="영어" />
+      <Button fx:id="savebtn" layoutX="193.0" layoutY="258.0" mnemonicParsing="false" text="저장" />
+      <Button fx:id="cancelbtn" layoutX="263.0" layoutY="258.0" mnemonicParsing="false" text="취소" />
+      <TextField fx:id="tname" layoutX="169.0" layoutY="93.0" />
+      <TextField fx:id="tkorean" layoutX="169.0" layoutY="126.0" />
+      <TextField fx:id="tmath" layoutX="169.0" layoutY="164.0" />
+      <TextField fx:id="tenglish" layoutX="169.0" layoutY="204.0" />
+   </children>
+</AnchorPane>
