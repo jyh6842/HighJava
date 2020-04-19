@@ -1,8 +1,5 @@
 package homework.javaFx.post_ibatis.vo;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-
 public class PostVO {
 	private String zipcode;
 	private String sido;

@@ -44,7 +44,7 @@ public class PostDao implements IPostDao {
 		List<PostVO> pList = new ArrayList<PostVO>();
 		
 		try {
-			pList = smc.queryForList("post.getPostInfoDong");
+			pList = smc.queryForList("post.getPostInfoDong", dongString);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -58,7 +58,7 @@ public class PostDao implements IPostDao {
 		List<PostVO> pList = new ArrayList<PostVO>();
 		
 		try {
-			pList = smc.queryForList("post.getPostInfoNum");
+			pList = smc.queryForList("post.getPostInfoNum", numString);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -27,12 +27,12 @@
 	 -->
 	
 	<!-- select 연습 -->
-	<select id="getPostInfoDong" parameterClass="String" resultClass="PVO">
-		select * from ziptb where dong = #dong#
+	<select id="getPostInfoDong" parameterClass="String" resultClass="postVO">
+		select * from ziptb where dong LIKE #dong# || '%'
 	</select>
 
-	<select id="getPostInfoNum" parameterClass="String" resultClass="PVO"> 
-		select * from ziptb where zipcode = #zipcode#
+	<select id="getPostInfoNum" parameterClass="String" resultClass="postVO"> 
+		select * from ziptb where zipcode LIKE '%' || #zipcode# || '%'
 	</select>
 
 

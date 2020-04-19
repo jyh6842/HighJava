@@ -19,67 +19,86 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class PostController implements Initializable{
+public class PostController implements Initializable {
 
-	@FXML ComboBox<String> comSelect;
-	@FXML TextField tfield;
-	@FXML Button btnseasrch;
-	@FXML TableView<PostVO> tv;
-	@FXML TableColumn<PostVO, String> tv_zipNum;
-	@FXML TableColumn<PostVO, String> tv_si;
-	@FXML TableColumn<PostVO, String> tv_gu;
-	@FXML TableColumn<PostVO, String> tv_dong;
-	@FXML TableColumn<PostVO, String> tv_addr;
-	
-	private IPostService service;
-	
-	private PostController() {
+	@FXML
+	private ComboBox<String> comSelect;
+	@FXML
+	private TextField tfield;
+	@FXML
+	private Button btnseasrch;
+	@FXML
+	private TableView<PostVO> tv;
+	@FXML
+	private TableColumn<PostVO, String> tv_zipNum;
+	@FXML
+	private TableColumn<PostVO, String> tv_si;
+	@FXML
+	private TableColumn<PostVO, String> tv_gu;
+	@FXML
+	private TableColumn<PostVO, String> tv_dong;
+	@FXML
+	private TableColumn<PostVO, String> tv_addr;
+
+	public IPostService service;
+
+	public PostController() {
 		service = PostService.getInstance();
 	}
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+
 		
+
 		
-		ObservableList<PostVO> data = FXCollections.observableArrayList();
-		
-		tv.setItems(data);
-		
-		tv_zipNum.setCellValueFactory(new PropertyValueFactory<PostVO, String>("id")); // 뒤에 id 가 vo
+
+		tv_zipNum.setCellValueFactory(new PropertyValueFactory<PostVO, String>("zipcode")); // 뒤에 id 가 vo
 		tv_si.setCellValueFactory(new PropertyValueFactory<PostVO, String>("sido")); // 뒤에 id 가 vo
-		tv_gu.setCellValueFactory(new PropertyValueFactory<PostVO, String>("gugun;")); // 뒤에 id 가 vo
-		tv_dong.setCellValueFactory(new PropertyValueFactory<PostVO, String>("dong;")); // 뒤에 id 가 vo
-		tv_addr.setCellValueFactory(new PropertyValueFactory<PostVO, String>("bunji;")); // 뒤에 id 가 vo
-		
+		tv_gu.setCellValueFactory(new PropertyValueFactory<PostVO, String>("gugun")); // 뒤에 id 가 vo
+		tv_dong.setCellValueFactory(new PropertyValueFactory<PostVO, String>("dong")); // 뒤에 id 가 vo
+		tv_addr.setCellValueFactory(new PropertyValueFactory<PostVO, String>("bunji")); // 뒤에 id 가 vo
+
 		comSelect.getItems().addAll("동이름", "우편번호");
 		comSelect.setValue(comSelect.getItems().get(0));// 동이름을 초기값으로 주기 위해서
+
+
 		
-		
-		btnseasrch.setOnAction(e->{
-			
-			
-			if(comSelect.getItems().get(0).equals("동이름")) {
-//				List<PostVO> pList = new ArrayList<PostVO>();
+		// selectAll 로 전부 가져온다.
+//		가져온 정보를 뿌려준다.
+
+		btnseasrch.setOnAction(e -> {
+
+			if (comSelect.getValue().equals(comSelect.getItems().get(0))) {
+				System.out.println("여기는 동이름");
 				
-//				pList = service.getselectPostDong(tfield.getText());
-//				
-//				for (PostVO postVO : pList) {
-//					 postVO = (PostVO) pList;
-//					 data.add(postVO);
-//				}
+				List<PostVO> pList = new ArrayList<PostVO>();
+
+				pList = service.getselectPostDong(tfield.getText());
+				ObservableList<PostVO> data = FXCollections.observableArrayList();	
 				
+				for (PostVO postVO : pList) {
+					data.add(postVO);
+				}
+				tv.setItems(data);
 				
-			}else {
+			} else  {
+				System.out.println("여기는 우편변호");
+				List<PostVO> pList = new ArrayList<PostVO>();
+
+				pList = service.getselectPostNum(tfield.getText());
+				ObservableList<PostVO> data = FXCollections.observableArrayList();	
 				
+				for (PostVO postVO : pList) {
+					data.add(postVO);
+				}
+				
+				tv.setItems(data);
+
 			}
-			
-			
+
 		});
-		
-		
-		
-		
-		
+
 	}// initialize
-	
+
 }
