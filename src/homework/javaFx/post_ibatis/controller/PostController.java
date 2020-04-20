@@ -39,7 +39,7 @@ public class PostController implements Initializable {
 	@FXML
 	private TableColumn<PostVO, String> tv_addr;
 
-	public IPostService service;
+	private IPostService service;
 
 	@FXML TextField tfield;
 

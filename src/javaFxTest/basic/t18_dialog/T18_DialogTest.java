@@ -1,4 +1,4 @@
-package javaFxTest.basic.t18;
+package javaFxTest.basic.t18_dialog;
 
 import java.io.File;
 import java.io.IOException;

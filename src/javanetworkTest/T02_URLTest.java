@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 
-public class T02_URLTest {
+public class T02_URLTest { // 951
    public static void main(String[] args) throws IOException, URISyntaxException{
 	// URL클래스 =>  인터넷에 존재하는  서버들의 자원에 접근할 수 있는 주소를 관리하는 클래스
 	      

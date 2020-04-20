@@ -11,7 +11,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class T03_URLConnectionTest {
+public class T03_URLConnectionTest { // 954
 	public static void main(String[] args) throws IOException {
 		// URLConnection => 애플리케이션과 URL 간의 통신 연결을 위한 추상 클래스
 		
@@ -25,7 +25,7 @@ public class T03_URLConnectionTest {
 		
 		System.out.println("Content-Type : " + urlCon.getContentType());
 		System.out.println("Encoding : " + urlCon.getContentEncoding());
-		System.out.println("Content : " + urlCon.getContent());
+		System.out.println("Content : " + urlCon.getContent()); // Object로 가져온다. 그래서 Stream으로 가지고 와야한다. url 
 		
 		// 전체 Header 정보 출력하기
 		Map<String, List<String>> headerMap = urlCon.getHeaderFields(); // 여기서 왜 List<string>>을 사용?
@@ -47,16 +47,17 @@ public class T03_URLConnectionTest {
 		
 		// 방법2 => URL 객체의 openStream() 메서드 이용하기
 		// InputStream is = url.openStream();
-		
-		/*
+		 
+		// 방법 1을 이용해서 가져온것?
 		InputStream is = url.openConnection().getInputStream();
-		InputStreamReader isr = new InputStreamReader(is, "utf-8");
-		BufferedReader br = new BufferedReader(isr);
+		
+		InputStreamReader isr = new InputStreamReader(is, "utf-8"); // byte 기반을 문자기반으로 바꿔준다.
+		BufferedReader br = new BufferedReader(isr); // 속도 향상을 위해서 사용하는 보조 스트림
 		
 		// 내용 출력하기
 		while (true) {
-			String str = br.readLine();
-			if(str == null) {
+			String str = br.readLine();// 한줄 한줄 읽기읽는 메서드
+			if(str == null) { // 읽을 데이터가 없으면 null을 리턴
 				break;
 			}
 			System.out.println(str);
@@ -64,7 +65,7 @@ public class T03_URLConnectionTest {
 		// 스트림 닫기
 		br.close();
 		
-		*/
+		
 		
 		
 		
