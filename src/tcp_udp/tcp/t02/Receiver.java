@@ -1,4 +1,4 @@
-package tcp.t02;
+package tcp_udp.tcp.t02;
 /**
  * 이 클래스는 소켓에서 메시지를 받아서 화면에 출력하는 역할 담당
  */

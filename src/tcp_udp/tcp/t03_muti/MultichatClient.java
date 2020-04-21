@@ -1,4 +1,4 @@
-package tcp.t03_muti;
+package tcp_udp.tcp.t03_muti;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;

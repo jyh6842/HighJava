@@ -1,4 +1,4 @@
-package tcp.t01;
+package tcp_udp.tcp.t01;
 
 import java.io.DataInputStream;
 import java.io.IOException;

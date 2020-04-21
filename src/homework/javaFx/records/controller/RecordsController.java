@@ -69,7 +69,7 @@ public class RecordsController implements Initializable{
 	
 		try {
 			Stage dialog = new Stage(StageStyle.UTILITY);
-			dialog.initModality(mo);
+//			dialog.initModality(mo);
 			
 			
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/addModal.fxml"));

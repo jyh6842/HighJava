@@ -1,4 +1,4 @@
-package tcp.t02;
+package tcp_udp.tcp.t02;
 
 import java.io.DataOutputStream;
 import java.net.Socket;
