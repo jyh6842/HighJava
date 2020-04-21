@@ -24,7 +24,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class RecordsController implements Initializable{
+public class RecordsMainController implements Initializable{
 
 	@FXML private TableView<recordsVO> tv;
 	@FXML private TableColumn<recordsVO, String> colname;
@@ -54,39 +54,26 @@ public class RecordsController implements Initializable{
 	}
 
 	@FXML public void addStudent(MouseEvent event) {
-//		 // 새창을 띄우자
-//		
-//		// 1. Stage 객체 생성
-//		Stage addStudentDiaglog = new Stage(StageStyle.UTILITY);
-//		
-//		// 2. 모달창 여부 설정
-//		// 모달창은 자식창이 나타나면 부모창을 사용할 수 없다. // 다른거 활성화 못시키게 막아버리기
-//		addStudentDiaglog.initModality(Modality.APPLICATION_MODAL);
-//		
-//		// 3. 부모창 지정
-//		addStudentDiaglog.initOwner(owner);
+		 // 새창을 띄우자
 		
+		// 1. Stage 객체 생성
+		Stage addStudentDiaglog = new Stage(StageStyle.UTILITY);
+		
+		// 2. 모달창 여부 설정
+		// 모달창은 자식창이 나타나면 부모창을 사용할 수 없다. // 다른거 활성화 못시키게 막아버리기
+		addStudentDiaglog.initModality(Modality.APPLICATION_MODAL);
+		
+		// 3. 부모창 지정
+		addStudentDiaglog.initOwner(tv.getScene().getWindow());
+		
+		addStudentDiaglog.setTitle("학생의 성적 추가");
+		
+		// 4. 자식창에 나타날 컨테이너 설정
+		Stage stage = new Stage();
 	
-		try {
-			Stage dialog = new Stage(StageStyle.UTILITY);
-//			dialog.initModality(mo);
+
 			
-			
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/addModal.fxml"));
-			Parent parent = loader.load();
-			
-			Scene scene = new Scene(parent);
-			
-			Stage stage = new Stage();
-			stage.setScene(scene);
-			stage.show();
-			
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+
 	}// addStudent
 
 }
