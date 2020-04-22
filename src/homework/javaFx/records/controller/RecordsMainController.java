@@ -18,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
@@ -69,7 +70,30 @@ public class RecordsMainController implements Initializable{
 		addStudentDiaglog.setTitle("학생의 성적 추가");
 		
 		// 4. 자식창에 나타날 컨테이너 설정
-		Stage stage = new Stage();
+		Parent parent = null;
+		
+		try {
+			parent = new FXMLLoader().load(getClass().getResource("../fxml/addModal.fxml"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		// FXML로 만든 자식창의 컨트롤을 부모가 만들어주기
+		TextField nameField = (TextField) parent.lookup("#tname");
+		TextField koreaField = (TextField) parent.lookup("#tkorean");
+		TextField mathField = (TextField) parent.lookup("#tmath");
+		TextField englishField = (TextField) parent.lookup("#tenglish");
+		
+		Button saveButton = (Button) parent.lookup("#savebtn");
+		Button cancelButton = (Button) parent.lookup("#cancelbtn");
+		
+		// 5. Scene 객체 생성해서 컨테이너 객체 추가
+		Scene scene = new Scene(parent);
+		
+		// 6. Stage 객체에 Scene 객체 추가
+		addStudentDiaglog.setScene(scene);
+		addStudentDiaglog.setResizable(false);//크기 고정
+		addStudentDiaglog.show();
 	
 
 			
