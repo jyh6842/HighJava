@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
-public class T01_VectorTest {
+public class T01_VectorTest { // 기존의 컬렉션 클래스들과의 호환을 위해서 남겨두어서 가능하면 사용하지 않는 것을 추천 p579
 	public static void main(String[] args) {
 		// Vector => List 계열 클래스
 
