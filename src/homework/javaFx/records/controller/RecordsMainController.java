@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import javax.swing.undo.StateEdit;
 
+import homework.javaFx.records.util.DataShare;
 import homework.javaFx.records.vo.recordsVO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -49,6 +50,7 @@ public class RecordsMainController implements Initializable{
 		recordsData.add(new recordsVO("홍길동A", 40, 60, 80));
 		recordsData.add(new recordsVO("홍길동B", 60, 80, 40));
 		recordsData.add(new recordsVO("홍길동C", 80, 40, 60));
+		recordsData = (ObservableList<recordsVO>) DataShare.recordsList;
 		
 		tv.setItems(recordsData);
 				
