@@ -2,12 +2,12 @@ package homework.javaFx.records.vo;
 
 public class recordsVO {
 	private String name;
-	private Integer kor;
-	private Integer math;
-	private Integer eng;
+	private int kor;
+	private int math;
+	private int eng;
 	
 	
-	public recordsVO(String name, Integer kor, Integer math, Integer eng) {
+	public recordsVO(String name, int kor, int math, int eng) {
 		super();
 		this.name = name;
 		this.kor = kor;

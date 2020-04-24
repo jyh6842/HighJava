@@ -3,6 +3,8 @@ package homework.javaFx.records.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import homework.javaFx.records.util.DataShare;
+import homework.javaFx.records.vo.recordsVO;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -11,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class addModalController implements Initializable {
 
@@ -39,10 +42,24 @@ public class addModalController implements Initializable {
 			
 			@Override
 			public void handle(ActionEvent event) {
+				DataShare.recordsList.add(new recordsVO(tname.getText(), Integer.parseInt(tkorean.getText()), Integer.parseInt(tmath.getText()), Integer.parseInt(tenglish.getText())));
+				Stage stage = (Stage) savebtn.getScene().getWindow();
+				stage.close();
+			}
+		});
+		
+		cancelbtn.setOnAction(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent event) {
+				Stage stage = (Stage) cancelbtn.getScene().getWindow();
+				stage.close();
 				
+		
 				
 			}
 		});
 	}
-
+	
+	
 }

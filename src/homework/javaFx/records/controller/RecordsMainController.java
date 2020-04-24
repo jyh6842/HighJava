@@ -47,10 +47,11 @@ public class RecordsMainController implements Initializable{
 		colenglish.setCellValueFactory(new PropertyValueFactory<recordsVO, Integer>("eng"));
 		
 		recordsData = FXCollections.observableArrayList();
-		recordsData.add(new recordsVO("홍길동A", 40, 60, 80));
-		recordsData.add(new recordsVO("홍길동B", 60, 80, 40));
-		recordsData.add(new recordsVO("홍길동C", 80, 40, 60));
-		recordsData = (ObservableList<recordsVO>) DataShare.recordsList;
+		
+		recordsData = DataShare.recordsList;
+		
+		
+		
 		
 		tv.setItems(recordsData);
 				
@@ -90,16 +91,20 @@ public class RecordsMainController implements Initializable{
 		Button cancelButton = (Button) parent.lookup("#cancelbtn");
 		
 		// 5. Scene 객체 생성해서 컨테이너 객체 추가
-		Scene scene = new Scene(parent);
 		
+		
+		Scene scene = new Scene(parent);
 		// 6. Stage 객체에 Scene 객체 추가
 		addStudentDiaglog.setScene(scene);
 		addStudentDiaglog.setResizable(false);//크기 고정
-		addStudentDiaglog.show();
+		addStudentDiaglog.showAndWait();
 	
-
+		recordsData = DataShare.recordsList;
+		tv.setItems(recordsData);
 			
 
 	}// addStudent
+
+	
 
 }

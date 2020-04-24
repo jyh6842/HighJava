@@ -1,4 +1,4 @@
-package lambdaTest;
+package lamdaTest;
 
 public class T03_LambdaTest {
    static int stVar = 9;

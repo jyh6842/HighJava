@@ -1,4 +1,4 @@
-package lambdaTest;
+package lamdaTest;
 /*
 	람다식 => 익명함수를 생성하기 위한 식
 			자바에서는 '매개변수를 가진 코드 블럭'

@@ -1,4 +1,4 @@
-package lambdaTest;
+package lamdaTest;
 /*
 	함수적 인터페이스 -> 추상메서드가 1개가 선언된 인터페이스
 */
