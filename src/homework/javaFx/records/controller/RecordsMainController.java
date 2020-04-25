@@ -104,6 +104,14 @@ public class RecordsMainController implements Initializable{
 			
 
 	}// addStudent
+
+	@FXML public void graph_show(MouseEvent event) {
+		Stage stage = new Stage();
+		
+		
+		
+	}
+	
 	
 
 	
