@@ -33,8 +33,8 @@ public class RecordsMainController implements Initializable{
 	@FXML private TableColumn<recordsVO, Integer> colkorean;
 	@FXML private TableColumn<recordsVO, Integer> colmath;
 	@FXML private TableColumn<recordsVO, Integer> colenglish;
-//	@FXML private Button btn_add;
-//	@FXML private Button btn_graph;
+	
+	@FXML Button btn_graph;
 
 	private ObservableList<recordsVO> recordsData;
 
@@ -104,6 +104,7 @@ public class RecordsMainController implements Initializable{
 			
 
 	}// addStudent
+	
 
 	
 
