@@ -1,4 +1,4 @@
-package json.read;
+package json.test.read;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
