@@ -15,7 +15,7 @@ public class UdpClient {
 		// 데이터가 저장될 공간으로 byte 배영을 생성한다. (패킷 수신용)
 		byte[] msg = new byte[100];
 		
-		DatagramPacket outPacket = new DatagramPacket(msg, 1, serverAddress, 8888);
+		DatagramPacket outPacket = new DatagramPacket(msg, 1, serverAddress, 8429);
 		DatagramPacket inPacket = new DatagramPacket(msg, msg.length);
 		
 		datagramSocket.send(outPacket); // DatagramPacket 전송

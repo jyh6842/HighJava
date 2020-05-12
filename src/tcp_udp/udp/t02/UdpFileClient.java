@@ -11,7 +11,7 @@ public class UdpFileClient {
 	public static final int BUFFER_SIZE = 10000;
 	
 	public static void main(String[] args) throws IOException {
-		int port = 8888;
+		int port = 8429;
 		
 		long fileSize;
 		long totalReadByte = 0;

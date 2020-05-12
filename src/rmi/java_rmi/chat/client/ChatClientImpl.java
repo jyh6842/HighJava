@@ -29,7 +29,7 @@ public class ChatClientImpl extends UnicastRemoteObject implements ChatClient, R
       ChatClientImpl.name = name;
 
       // 등록된 서버를 찾기 위해 Registry객체를 생성한 후 사용할 객체를 불러온다.
-      Registry reg = LocateRegistry.getRegistry("192.168.206.2", 8888);
+      Registry reg = LocateRegistry.getRegistry("192.168.206.2", 8429);
       try {
          chatServer = (ChatServer) reg.lookup("chatServer");
          chatServer.addClient(this, name);

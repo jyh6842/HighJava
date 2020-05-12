@@ -34,7 +34,7 @@ public class RemoteServer extends UnicastRemoteObject implements RemoteInterface
          //2.구현한 객체를 클라이언트에서 찾을수 있도록 Registry객체를 생성해서 등록한다.
          
          //포트번호를 지정하여 Registry객체 생성(기본 포트값 : 1099)
-         Registry reg = LocateRegistry.createRegistry(8888);
+         Registry reg = LocateRegistry.createRegistry(8429);
          
          //Registry서버에 제공하는 객체 등록
          //형식) Registry객체 변수.rebind("객체의 Alias", 등록할 객체변수);

@@ -18,7 +18,7 @@ public class ChatServerImpl extends UnicastRemoteObject implements ChatServer{
       try {
          ChatServer chatServer = new ChatServerImpl();
          
-         Registry reg = LocateRegistry.createRegistry(8888);
+         Registry reg = LocateRegistry.createRegistry(8429);
          reg.rebind("chatServer", chatServer);
          
          System.out.println("서버 실행중");

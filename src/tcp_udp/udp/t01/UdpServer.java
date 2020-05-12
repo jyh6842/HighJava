@@ -12,7 +12,7 @@ public class UdpServer {
    
    public void start() throws IOException{
       
-      socket = new DatagramSocket(8888); // 포트번호 8888번을 사용하는 소켓 생성 // 상대방에게 던질 때 사용
+      socket = new DatagramSocket(8429); // 포트번호 8429번을 사용하는 소켓 생성 // 상대방에게 던질 때 사용
       DatagramPacket inPacket, outPacket; // 패킷송수신을 위한 객체변수생성 // 데이터를 담기 위해서(데이터를 받을, 데이터를 보낼) 그래서 2개 만듬
       
       byte[] inMsg = new byte[1]; //패킷수신을 위한 바이트배열 선언
