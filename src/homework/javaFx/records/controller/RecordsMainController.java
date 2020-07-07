@@ -94,7 +94,8 @@ public class RecordsMainController implements Initializable {
 		}
 
 		// FXML로 만든 자식창의 컨트롤을 부모가 만들어주기
-		TextField nameField = (TextField) parent.lookup("#tname");
+		TextField nameField = (TextField) parent.lookup("#tname"
+				);
 		TextField koreaField = (TextField) parent.lookup("#tkorean");
 		TextField mathField = (TextField) parent.lookup("#tmath");
 		TextField englishField = (TextField) parent.lookup("#tenglish");

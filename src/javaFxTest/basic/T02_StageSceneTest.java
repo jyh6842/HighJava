@@ -18,7 +18,7 @@ public class T02_StageSceneTest extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		VBox root = new VBox(); //컨트롤들을 세로로 배치해 주는 컨테이너
 		root.setPrefWidth(650); // VBox의 너비
-		root.setPrefHeight(150); // VBox의 높이
+		root.setPrefHeight(150); // VBox의 높이 
 		root.setAlignment(Pos.CENTER); // 컨트롤들을 가운데 정렬
 		root.setSpacing(20); // 컨트롤과 컨트롤 사이의 간격
 		
